@@ -6,9 +6,9 @@
  * priority of pins a > b > c > d
  */
 
- CHIP PriorityEncoder4Way{
+ CHIP PriorityEncoder4Way2Way{
      IN a,b,c,d;
-     OUT out[2];
+     OUT x,y;
 
      PARTS:
      Not(in=a, out=nota);
@@ -17,8 +17,8 @@
 
      And(a=nota, b=notc, out=aNcN);
      And(a=nota, b=b, out=aNb);
-     Or(a=aNcN, b=aNb, out=out[0]);
+     Or(a=aNcN, b=aNb, out=x);
 
-     And(a=nota, b=notb, out=out[1]);
+     And(a=nota, b=notb, out=y);
      
  }

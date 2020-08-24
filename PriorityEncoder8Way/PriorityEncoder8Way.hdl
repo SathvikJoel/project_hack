@@ -1,0 +1,29 @@
+/* 8 to 3 way Priority Encoder
+ * out = 000 if a = 1
+ *     = 001 if a = 0 and b = 1
+       = 010 if a = 0 and b = 0 and c = 1
+       = 011 if a = 0 and b = 0 and c = 0 and d = 1
+       = 100 if a = 0 and b = 0 and c = 0 and d = 0 and e = 1
+       = 101 if a = 0 and b = 0 and c = 0 and d = 0 and e = 0 and f = 1
+       = 110 if a = 0 and b = 0 and c = 0 and d = 0 and e = 0 and f = 0 and g = 1
+       = 111 if a = 0 and b = 0 and c = 0 and d = 0 and e = 0 and f = 0 and g = 0 and h =1
+ * priority of pins a > b > c > d > e > f > g > h
+ */
+ CHIP PriorityEncoder8Way{
+     IN a,b,c,d,e,f,g,h;
+     OUT out[3];
+
+     PARTS:
+     PriorityEncoder4Way2Way(a=a,b=b,c=c,d=d,x =abcd0,y = abcd1);
+     Or(a=a, b=b, out=aPb);
+     Or(a=aPb , b=c, out=aPbPc);
+     Or(a= aPbPc, b=d, out=validbit);
+     PriorityEncoder4Way2Way(a=e,b=f,c=g,d=h,x =efgh0, y = efgh1);
+     Not(in=validbit, out = notvalid);
+     Mux(a=abcd0, b=efgh0, sel=notvalid, out=out[0]);
+     Mux(a=abcd1, b=efgh1, sel=notvalid, out=out[1]);
+     Or(a=notvalid, b=false, out=out[2]);
+     
+     
+     
+ }
