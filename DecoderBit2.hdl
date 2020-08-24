@@ -1,0 +1,18 @@
+/*2-to-4 binary decoder*/
+/*Input:2 input lines*/
+/*output:only 1 active output line out of 4 output lines*/
+
+CHIP DecoderBit2 {
+
+    IN x1,x0;
+    OUT y3,y2,y1,y0;
+
+    PARTS:
+    Not(in=x1, out=nota);
+    Not(in=x0, out=notb);
+    And(a=nota, b=notb, out=y0);
+    And(a=nota, b=x0, out=y1);
+    And(a=x1, b=x0, out=y2);
+    And(a=x1, b=notb, out=y3);
+    
+}

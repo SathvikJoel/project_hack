@@ -1,0 +1,41 @@
+/*3-to-8 binary decoder*/
+/*Input:3 input lines*/
+/*output:only 1 active output line out of 8 output lines*/
+
+CHIP DecoderBit3 {
+
+    IN x2,x1,x0;
+    OUT y7,y6,y5,y4,y3,y2,y1,y0;
+
+    PARTS:
+    Not(in=x2, out=notc);
+    Not(in=x1, out=notb);
+    Not(in=x0, out=nota);
+    
+    And(a=nota, b=notb, out=tempY0);
+    And(a=tempY0, b=notc, out=y0);
+
+    And(a=x0, b=notb, out=tempY1);
+    And(a=tempY1, b=notc, out=y1);
+
+    And(a=nota, b=x1, out=tempY2);
+    And(a=tempY2, b=notc, out=y2);
+
+    And(a=x1, b=x0, out=tempY3);
+    And(a=tempY3, b=notc, out=y3);
+
+    And(a=nota, b=notb, out=tempY4);
+    And(a=tempY4, b=x2, out=y4);
+
+    And(a=x0, b=notb, out=tempY5);
+    And(a=tempY5, b=x2, out=y5);
+
+    And(a=nota, b=x1, out=tempY6);
+    And(a=tempY6, b=x2, out=y6);
+
+    And(a=x0, b=x1, out=tempY7);
+    And(a=tempY7, b=x2, out=y7);
+
+    
+    
+}
