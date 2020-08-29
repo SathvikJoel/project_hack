@@ -6,7 +6,11 @@
  * priority of pins a > b > c > d
  */
 
- CHIP PriorityEncoder4Way{
+/* Logic :
+ * out[0] = a'c' + a'b 
+ * out[1] = a'b'
+ */
+ CHIP PriorityEncoder4{
      IN a,b,c,d;
      OUT out[2];
 

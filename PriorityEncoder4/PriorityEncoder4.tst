@@ -1,8 +1,9 @@
 /* PriorityEncoder4Way.tst: Tests the PriorityEncoder4Way.hdl Program. The PriorityEnoder4Way Chip 
 should return a bus representing the code of the inout pin that has the highest Priority */
 
-load PriorityEncoder4Way.hdl,
-output-file PriorityEnoder4Way.out,
+load PriorityEncoder4.hdl,
+output-file PriorityEnoder4.out,
+compare-to PriorityEncoder4.cmp,
 output-list a%D1.1.1
             b%D1.1.1
             c%D1.1.1

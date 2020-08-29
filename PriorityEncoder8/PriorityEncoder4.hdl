@@ -1,14 +1,14 @@
 /* 4 to 2 way Priority Encoder
- * x,y = 00 if a = 1
+ * out = 00 if a = 1
  *     = 01 if a = 0 and b =1
        = 10 if a = 0 and b =0 and c = 1
        = 11 if a = 0 and b = 0 and c = 0 and d = 1
  * priority of pins a > b > c > d
  */
 
- CHIP PriorityEncoder4Way2Way{
+ CHIP PriorityEncoder4{
      IN a,b,c,d;
-     OUT x,y;
+     OUT out[2];
 
      PARTS:
      Not(in=a, out=nota);
@@ -17,8 +17,8 @@
 
      And(a=nota, b=notc, out=aNcN);
      And(a=nota, b=b, out=aNb);
-     Or(a=aNcN, b=aNb, out=x);
+     Or(a=aNcN, b=aNb, out=out[0]);
 
-     And(a=nota, b=notb, out=y);
+     And(a=nota, b=notb, out=out[1]);
      
  }
