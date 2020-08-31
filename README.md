@@ -4,7 +4,11 @@ This is meant for managing the code for CS2310 lab assignments
 
 ## Updates
 
-Assignment-1 due 31-aug-2020
+Assignment-2 due 07-sept-2020
+
+## Chips
+
+Assignment 2:  (1) 2-bit 4-to-1 Mux, (2) 2-bit 4-to-1 Priority Mux (3) 2-bit 1-to-8 Demux, (4) 8-bit comparator (5) 8-bit Parity Generator and Checker
 
 ## Folder Management
 
