@@ -7,12 +7,8 @@ output-list a%D1.1.1
             b%D1.1.1
             c%D1.1.1
             d%D1.1.1
-            out%D1.2.1;
-
-//Invalid Input
-set a 0, set b 0, set c 0, set d 0,
-eval,
-output;
+            out%B1.2.1;
+    
 
 // Valid inputs -15 
 

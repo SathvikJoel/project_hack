@@ -1,15 +1,9 @@
-load PriorityEncoder8.hdl,
-output-file PriorityEnoder8.out,
-compare-to PriorityEncoder8.cmp,
+load PriorityEncoder8_v2.hdl,
+output-file PriorityEnoder8_v2.out,
 output-list a b c d e f g h 
-            out%D1.3.1;
+            out%B1.3.1;
 
 
-//Invalid Input
-//simulation step
-set a 0 ,  set b 0 ,  set c 0 ,  set d 0 ,  set e 0 ,  set f 0 ,  set g 0 ,  set h 0 ,  
-eval,
-output;
 
 //Valid Inputs 
 //simulation step
