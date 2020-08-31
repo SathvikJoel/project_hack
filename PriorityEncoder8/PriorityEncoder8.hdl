@@ -14,7 +14,7 @@
      OUT out[3];
 /*
  * Description : Uses the priority Encoder 4 way for the first 4 pins and last 4 pins seperately and select 
-is based on the validbit , which says whether there is a avtive request in the first 4 pins */
+is based on the validbit , which says whether there is a active request in the first 4 pins */
      PARTS:
      PriorityEncoder4(a=a,b=b,c=c,d=d,out[0] =abcd0,out[1] = abcd1);
      Or(a=a, b=b, out=aPb);

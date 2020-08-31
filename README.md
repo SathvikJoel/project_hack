@@ -13,8 +13,8 @@ And also name the files as xxx.hdl, xxx.out , xxx.cmp for convinience and unifor
 
 ## Team members 
 
-Hakesh
-Sai Teja
+Hakesh |
+Sai Teja |
 Sathvik 
 
 
