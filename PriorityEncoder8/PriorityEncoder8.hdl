@@ -9,7 +9,7 @@
        = 111 if a = 0 and b = 0 and c = 0 and d = 0 and e = 0 and f = 0 and g = 0 and h =1
  * priority of pins a > b > c > d > e > f > g > h
  */
- CHIP PriorityEncoder8_v2{
+ CHIP PriorityEncoder8{
      IN a,b,c,d,e,f,g,h;
      OUT out[3];
 /*

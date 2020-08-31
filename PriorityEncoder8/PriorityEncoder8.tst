@@ -1,5 +1,5 @@
-load PriorityEncoder8_v2.hdl,
-output-file PriorityEnoder8_v2.out,
+load PriorityEncoder8.hdl,
+output-file PriorityEnoder8.out,
 output-list a b c d e f g h 
             out%B1.3.1;
 
