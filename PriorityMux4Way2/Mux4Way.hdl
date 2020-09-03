@@ -1,0 +1,26 @@
+// Mux4Way2
+/*
+ * 1bit 4-to-1 way Multiplxer
+ * 
+ * CHIP Description : outputs 1bit data from the dataline based on the code from datalines
+ *
+ * Design : (~s0).(~s1).(x0) + (~s1).(s0).(x1) + (s1).(~s0).(x2) + (s1).(s0).(x3)
+ */
+
+
+CHIP Mux4Way{
+    IN x0,x1,x2,x3, s[2];
+    OUT out;
+
+    PARTS:
+    Not(in=s[0], out=s0n);
+    Not(in=s[1], out=s1n);
+
+    And3(a=s0n, b=s1n, c=x0, out=w1);
+    And3(a=s[0], b=s1n, c=x1, out=w2);
+    And3(a=s0n, b=s[1], c=x2, out=w3);
+    And3(a=s[0], b=s[1], c=x3, out=w4);
+
+    Or4(a=w1, b=w2, c=w3, d=w4,out =out);
+
+}

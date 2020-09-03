@@ -1,0 +1,21 @@
+// PriorityMux4Way2
+/*
+ * 2bit 4-to-1 way priority multiplxer
+ * 
+ * CHIP Description : outputs 2bit data from the dataline selected by the 4 way priority encoder
+ * based on the priority of pins.
+ *
+ * Design : Each bit is parallely processed using a 1bit 4-to-1 way priority multiplxer
+ */
+
+
+CHIP PriorityMux4Way2{
+    IN r0, r1, r2, r3, x0[2], x1[2], x2[2], x3[2];
+    OUT out[2];
+
+    PARTS:
+    PriorityEncoder4(a=r0, b=r1, c=r2, d=r3, out=sel);
+    Mux4Way(x0=x0[0] ,x1=x1[0] ,x2=x2[0] ,x3=x3[0], s=sel, out =out[0]);
+    Mux4Way(x0=x0[1] ,x1=x1[1] ,x2=x2[1] ,x3=x3[1], s=sel, out =out[1]);
+
+}
