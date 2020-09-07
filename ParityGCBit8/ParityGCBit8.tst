@@ -1,6 +1,15 @@
 /*ParityGCBit8...Tests ParityGCBit8 chip in ParityGCBit8.hdl 
     ie.,Detect 1 bit error (either in Data bits or Parity Bits) and give output(Z) as 1 if any One bit Errors
     else Z = 0 (For multi errors  Z =0 or Z =1)
+    
+    For sake comparisions We Included orginal data bits x7 to x0 along with y7 to y0 (received data bits) to get where is error(either parity bit or 
+    data bit error).
+    
+    Data sent by Transmitter : x7 to x0(8 bit) data bits and corresponding parity bit
+    Data Received by receiver : y7 to y0(8 bit) and Pg
+    
+    NOTE : Pg is set manually because it can have error when transmitted
+            ie.,Pg may or may not equal to x7 o x6 o x5 ... x0(where o = xor)
 */     
 
 load ParityGCBit8.hdl,
