@@ -5,7 +5,8 @@
         
     Output:
         (i)Generates Parity bit for Received Data bits (8 bit) - Pc
-        (ii)Checkes this Pc with parity bit of Transmitted Data (Pg) 
+        (ii)Checkes this Pc with parity bit of Transmitted Data (Pg)
+            (Note : pg is parity bit received on receiver side .so it can also an error bit.FORMALLY Pg may or may not be equal to x7 o x6 o x5 o x4 o x3... o x0 ,where o is xor) 
             and return Z = 1 if Error in parity bit or received bits (only one bit)..
                 Z = 0 if No error in parity bit and received Data bits
                     
