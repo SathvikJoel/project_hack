@@ -24,7 +24,3 @@ And also name the files as xxx.hdl, xxx.out , xxx.cmp for convinience and unifor
 Hakesh |
 Sai Teja |
 Sathvik
-
-
-
-
