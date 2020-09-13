@@ -48,6 +48,6 @@ CHIP RCA
   FullAdder(a=x[14], b=w14, c=c14, sum=z[14], carry=c15);
   FullAdder(a=x[15], b=w15, c=c15, sum=z[15], carry=c16);
 
-  OverFlow(c15=c15, c16=c16, cb=cb, S=S, OF=OF);
+  DetectOverFlow(c15=c15, c16=c16, cb=cb, S=S, OF=OF);
 
 }
