@@ -16,6 +16,7 @@ CHIP Add16CLA{
     OUT z[16] , OF;
 
     PARTS:
+    // Toggle bits
     IfOnesComplement(y=y[0..15],cb=cb ,z=w);
     //Propagate and generate terms
     Xor16(x=x[0..15], y=w, z=p);
