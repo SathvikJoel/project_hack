@@ -19,7 +19,7 @@ CHIP RCA16Bit
     Xor(a=y[4], b=cb, out=w4);
     Xor(a=y[5], b=cb, out=w5);
     Xor(a=y[6], b=cb, out=w6);
-    Xor(a=y[7], b=cb, out=w7);
+    Xor(a=y[7], b=cb, out=w7);         // 2's complement form of y if cb=1
     Xor(a=y[8], b=cb, out=w8);
     Xor(a=y[9], b=cb, out=w9);
     Xor(a=y[10], b=cb, out=w10);
@@ -36,7 +36,7 @@ CHIP RCA16Bit
    Carry(a=x[4], b=w4, c=c4, out=c5);
    Carry(a=x[5], b=w5, c=c5, out=c6);
    Carry(a=x[6], b=w6, c=c6, out=c7);
-   Carry(a=x[7], b=w7, c=c7, out=c8);
+   Carry(a=x[7], b=w7, c=c7, out=c8);      // c[i+1] = x[i]y[i] + y[i]c[i] + c[i]x[i]  
    Carry(a=x[8], b=w8, c=c8, out=c9);
    Carry(a=x[9], b=w9, c=c9, out=c10);
    Carry(a=x[10], b=w10, c=c10, out=c11);
@@ -53,7 +53,7 @@ CHIP RCA16Bit
    Xor2(a=x[4], b=w4, c=c4, out=z[4]);
    Xor2(a=x[5], b=w5, c=c5, out=z[5]);
    Xor2(a=x[6], b=w6, c=c6, out=z[6]);
-   Xor2(a=x[7], b=w7, c=c7, out=z[7]);
+   Xor2(a=x[7], b=w7, c=c7, out=z[7]);       // s[i] = x[i] xor y[i] xor c[i]
    Xor2(a=x[8], b=w8, c=c8, out=z[8]);
    Xor2(a=x[9], b=w9, c=c9, out=z[9]);
    Xor2(a=x[10], b=w10, c=c10, out=z[10]);
