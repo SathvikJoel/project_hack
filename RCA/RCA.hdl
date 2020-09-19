@@ -31,22 +31,22 @@ CHIP RCA
     Xor(a=y[15], b=cb, out=w15);
 
 
-  FullAdder(a=x[0], b=w0, c=cb, sum=z[0], carry=c1);
-  FullAdder(a=x[1], b=w1, c=c1, sum=z[1], carry=c2);
-  FullAdder(a=x[2], b=w2, c=c2, sum=z[2], carry=c3);
-  FullAdder(a=x[3], b=w3, c=c3, sum=z[3], carry=c4);
-  FullAdder(a=x[4], b=w4, c=c4, sum=z[4], carry=c5);
-  FullAdder(a=x[5], b=w5, c=c5, sum=z[5], carry=c6);
-  FullAdder(a=x[6], b=w6, c=c6, sum=z[6], carry=c7);
-  FullAdder(a=x[7], b=w7, c=c7, sum=z[7], carry=c8);
-  FullAdder(a=x[8], b=w8, c=c8, sum=z[8], carry=c9);
-  FullAdder(a=x[9], b=w9, c=c9, sum=z[9], carry=c10);
-  FullAdder(a=x[10], b=w10, c=c10, sum=z[10], carry=c11);
-  FullAdder(a=x[11], b=w11, c=c11, sum=z[11], carry=c12);
-  FullAdder(a=x[12], b=w12, c=c12, sum=z[12], carry=c13);
-  FullAdder(a=x[13], b=w13, c=c13, sum=z[13], carry=c14);
-  FullAdder(a=x[14], b=w14, c=c14, sum=z[14], carry=c15);
-  FullAdder(a=x[15], b=w15, c=c15, sum=z[15], carry=c16);
+  Fulladd(a=x[0], b=w0, c=cb, sum=z[0], carry=c1);
+  Fulladd(a=x[1], b=w1, c=c1, sum=z[1], carry=c2);
+  Fulladd(a=x[2], b=w2, c=c2, sum=z[2], carry=c3);
+  Fulladd(a=x[3], b=w3, c=c3, sum=z[3], carry=c4);
+  Fulladd(a=x[4], b=w4, c=c4, sum=z[4], carry=c5);
+  Fulladd(a=x[5], b=w5, c=c5, sum=z[5], carry=c6);
+  Fulladd(a=x[6], b=w6, c=c6, sum=z[6], carry=c7);
+  Fulladd(a=x[7], b=w7, c=c7, sum=z[7], carry=c8);
+  Fulladd(a=x[8], b=w8, c=c8, sum=z[8], carry=c9);
+  Fulladd(a=x[9], b=w9, c=c9, sum=z[9], carry=c10);
+  Fulladd(a=x[10], b=w10, c=c10, sum=z[10], carry=c11);
+  Fulladd(a=x[11], b=w11, c=c11, sum=z[11], carry=c12);
+  Fulladd(a=x[12], b=w12, c=c12, sum=z[12], carry=c13);
+  Fulladd(a=x[13], b=w13, c=c13, sum=z[13], carry=c14);
+  Fulladd(a=x[14], b=w14, c=c14, sum=z[14], carry=c15);
+  Fulladd(a=x[15], b=w15, c=c15, sum=z[15], carry=c16);
 
   DetectOverFlow(c15=c15, c16=c16, cb=cb, S=S, OF=OF);
 
