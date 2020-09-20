@@ -1,3 +1,8 @@
+/*
+ * Test file for Mul8
+ * 
+ * Contains 4 pairs that do not result in overFlow &&  2 pairs resulting in overFlow
+ */
 load Mul8.hdl,
 output-file Mul8.out,
 output-list a%B1.8.1  b%B1.8.1   out%B1.8.1  OF%B1.1.1;
@@ -26,3 +31,8 @@ output;
 set  a %B00010101 , set  b %B00001111 , 
 eval ,
 output;
+
+// 127 * 32 = 4064
+set a %B01111111 , set b %B00100000 , 
+eval ,
+output ;
