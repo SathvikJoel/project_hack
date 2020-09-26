@@ -18,12 +18,11 @@ opcode for operation :
     011 - Xor
     100 - Addition
     101 - Subtraction (x - y)
-    110 - Unsigned Multiplication.(S = 0)
-    111 - Signed Multiplication.(S = 1)
+    110 - Unsigned Multiplication.
+    111 - Signed Multiplication.
 
 Note : overflow error in unsigned subtraction is NOT detected.So x >= y must hold in that case. 
-       Also for op = 110 => S = 0 and op = 111 => S = 1.Then only correct results are expected.
-
+       Chip uses "S" for only addition/subtraction.It is not involved in multiplication.
 ****************/
 
 CHIP ALU8 {
@@ -52,14 +51,13 @@ CHIP ALU8 {
 
     //Overflow Detection 
     //let op be opcode for formula convience
-    //OF = op[2].(~op[1]).of1 + op[2].op[1].(~op[0]).(~S).of2 + op[2].op[1].op[0].S.of3
+    //OF = op[2].(~op[1]).of1 + op[2].op[1].(~op[0]).of2 + op[2].op[1].op[0].of3
     //      (add/sub overflow)      (unsigned MUl overflow)        (signed MUL overflow)
     Not(in = opcode[1],out = NotOpcode1);
     Not(in = opcode[0],out = NotOpcode0);
-    Not(in = S ,out = notS);
     And8Way(in[0] = opcode[2],in[1] = NotOpcode1,in[2] = of1,in[3..7] = true,out = OF00);
-    And8Way(in[0..1] = opcode[1..2],in[2] = NotOpcode0,in[3] = of2,in[4] = notS,in[5..7] = true,out = OF01);
-    And8Way(in[0..2] = opcode,in[3] = of3,in[4] = S,in[5..7] = true,out = OF02);
+    And8Way(in[0..1] = opcode[1..2],in[2] = NotOpcode0,in[3] = of2,in[4..7] = true,out = OF01);
+    And8Way(in[0..2] = opcode,in[3] = of3,in[4..7] = true,out = OF02);
 
     Or8Way(in[0] = OF00,in[1] = OF01,in[2] = OF02,in[3..7] = false,out = OF);
 
