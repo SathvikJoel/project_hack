@@ -19,7 +19,7 @@ CHIP FPMUL16{
     //Mantissa Multiplier
     //Xm[0] = 1 since the mantissa is 1.Xm
     //Ym[0] = 1 since the mantissa is 1.Ym
-    MantisaaMUL(a[0] = true , a[1..7] = X[9..15], b[1..7] = Y[9..15] , out = Pm);
+    MantissaMUL(a[0] = true , a[1..7] = X[9..15], b[1..7] = Y[9..15] , out = Pm);
     // Data Normalization
     Mux2Way7bit(x1 = Pm[14..8], x0 = Pm[13..7], s0 = Pm[15] , y = Z[9..15]);
 
