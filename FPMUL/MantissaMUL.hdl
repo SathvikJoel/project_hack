@@ -4,9 +4,13 @@
  * 
  * CHIP NAME : MantissaMUL
  * 
- * DESCRIPTION :   
+ * DESCRIPTION :   Multiplies the mantissas in both the floating point numbers
+ *                 1.Xm(8 bits) * 1.Ym(8 bits) = Pm(16 bits) 
+ * 
+ * Tested : @sathvik Working correctly
  *
  * Logic :
+ * Uses the same circut as for the 8bit unsigned Multipler 
  * Summands at each level
  * level1 :    pp0 pp1 pp2 || pp3 pp4 pp5 || pp6 pp7
  * level2 :    c00 s00 c01 || s01 pp6 pp7
@@ -14,15 +18,15 @@
  * level4 :    c20 s20 s11
  * level5 :    c30 s30
  * 16BitAdder( c30 , s30 )
- * OverFlow detection 
+ *
  */
 
  CHIP MantissaMUL{
-     IN Xm[8] , Ym[8];
-     OUT Pm[16];
+     IN a[8],b[8];
+    OUT out[16];
 
-     PARTS :
-      //pp0
+    PARTS:
+    //pp0
     And16(a[0..7] = a,a[8..15] = false,b[0] = b[0],b[1] = b[0],b[2] = b[0],b[3] = b[0],b[4] = b[0],b[5] = b[0],b[6] = b[0],b[7] = b[0],b[8..15] = false,out = pp0);
     //pp1
     And16(a[0] = false,a[1..8] = a,a[9..15] = false,b[0] = false,b[1] = b[1],b[2] = b[1],b[3] = b[1],b[4] = b[1],b[5] = b[1],b[6] = b[1],b[7] = b[1],b[8] = b[1],b[9..15] = false,out = pp1);
@@ -54,6 +58,6 @@
     CSA(a = s20,b = c20,c = s11,sum = s30,carry = c30);   
 
     //16BitAdder( c30 , s30 )
-    Add16CLA(x = s30 , y = c30 , cb = false , S = false , z = Pm, OF = waste) ;
+    Add16CLA(x = s30 , y = c30 , cb = false , S = false , z = out , OF = waste) ;
 
  }
