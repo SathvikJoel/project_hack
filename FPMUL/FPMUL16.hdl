@@ -1,0 +1,11 @@
+CHIP FPMUL16{
+    IN X[16], Y[16];
+    OUT Z[16];
+
+    PARTS:
+    //Mantissa Multiplier
+    MantisaaMUL(Xm[0] = true , Xm[1..7] = X[9..15], Ym[1..7] = Y[9..15] , Pm = Pm);
+    // Data Normalization
+    Mux2Way7bit(x1 = Pm[14..8], x0 = Pm[13..7], s0 = Pm[15] , y = Z[9..15])
+    
+}
