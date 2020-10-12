@@ -4,6 +4,7 @@
  * Test file for FP16
  * 
  * Testcases for 
+ * Two pairs of numbers of the same sign (@Sathvik)
  *
  * 
  */
@@ -17,7 +18,7 @@
  eval,
  output;
 
- //
- set X %B0 10100101 01001010, set Y %B0010101001010101 ,
+ //{1.34375 * 2^38} * {1.6640625 * 2^-43} = 2.236083984 * 2^123 (0 01111011 0001111)
+ set X %B0101001010101100, set Y %B0010101001010101 ,
  eval,
  output;
