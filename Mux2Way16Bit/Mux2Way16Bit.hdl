@@ -1,0 +1,68 @@
+/* If s0=0 then y=x0 
+
+   else y=x1 
+
+   The assignment operations mentioned above are all 16-bit. For example, "y=x0" means for i=0,1,..,15  y[i] = x0[i]  */
+
+
+CHIP Mux2Way16Bit
+{
+  IN x1[16], x0[16], s0;
+  OUT y[16];
+
+  PARTS:
+
+  Not(in=s0, out=nots0);
+
+  And(a=nots0, b=x0[0], out=w1);    // w1 = ~s0.x0[0]
+  And(a=nots0, b=x0[1], out=w2);    // w2 = ~s0.x0[1]
+  And(a=nots0, b=x0[2], out=w3);    // w3 = ~s0.x0[2]
+  And(a=nots0, b=x0[3], out=w4);    // w4 = ~s0.x0[3]
+  And(a=nots0, b=x0[4], out=w5);    // w5 = ~s0.x0[4]
+  And(a=nots0, b=x0[5], out=w6);    // w6 = ~s0.x0[5]
+  And(a=nots0, b=x0[6], out=w7);    // w7 = ~s0.x0[6]
+  And(a=nots0, b=x0[7], out=w8);    // w8 = ~s0.x0[7]
+  And(a=nots0, b=x0[8], out=w9);    // w9 = ~s0.x0[8]
+  And(a=nots0, b=x0[9], out=w10);   // w10 = ~s0.x0[9]
+  And(a=nots0, b=x0[10], out=w11);  // w11 = ~s0.x0[10]
+  And(a=nots0, b=x0[11], out=w12);  // w12 = ~s0.x0[11]
+  And(a=nots0, b=x0[12], out=w13);  // w13 = ~s0.x0[12]
+  And(a=nots0, b=x0[13], out=w14);  // w14 = ~s0.x0[13]
+  And(a=nots0, b=x0[14], out=w15);  // w15 = ~s0.x0[14]
+  And(a=nots0, b=x0[15], out=w16);  // w16 = ~s0.x0[15]
+
+  And(a=s0, b=x1[0], out=w17);      // w17 = s0.x1[0]
+  And(a=s0, b=x1[1], out=w18);      // w18 = s0.x1[1]
+  And(a=s0, b=x1[2], out=w19);      // w19 = s0.x1[2]
+  And(a=s0, b=x1[3], out=w20);      // w20 = s0.x1[3]
+  And(a=s0, b=x1[4], out=w21);      // w21 = s0.x1[4]
+  And(a=s0, b=x1[5], out=w22);      // w22 = s0.x1[5]
+  And(a=s0, b=x1[6], out=w23);      // w23 = s0.x1[6]
+  And(a=s0, b=x1[7], out=w24);      // w24 = s0.x1[7]
+  And(a=s0, b=x1[8], out=w25);      // w25 = s0.x1[8]
+  And(a=s0, b=x1[9], out=w26);      // w26 = s0.x1[9]
+  And(a=s0, b=x1[10], out=w27);     // w27 = s0.x1[10]
+  And(a=s0, b=x1[11], out=w28);     // w28 = s0.x1[11]
+  And(a=s0, b=x1[12], out=w29);     // w29 = s0.x1[12]
+  And(a=s0, b=x1[13], out=w30);     // w30 = s0.x1[13]
+  And(a=s0, b=x1[14], out=w31);     // w31 = s0.x1[14]
+  And(a=s0, b=x1[15], out=w32);     // w32 = s0.x1[15]
+
+  Or(a=w1, b=w17, out=y[0]);        // y[0] = ~s0.x0[0] + s0.x1[0]
+  Or(a=w2, b=w18, out=y[1]);        // y[1] = ~s0.x0[1] + s0.x1[1]
+  Or(a=w3, b=w19, out=y[2]);        // y[2] = ~s0.x0[2] + s0.x1[2]
+  Or(a=w4, b=w20, out=y[3]);        // y[3] = ~s0.x0[3] + s0.x1[3]
+  Or(a=w5, b=w21, out=y[4]);        // y[4] = ~s0.x0[4] + s0.x1[4]
+  Or(a=w6, b=w22, out=y[5]);        // y[5] = ~s0.x0[5] + s0.x1[5]
+  Or(a=w7, b=w23, out=y[6]);        // y[6] = ~s0.x0[6] + s0.x1[6]
+  Or(a=w8, b=w24, out=y[7]);        // y[7] = ~s0.x0[7] + s0.x1[7]
+  Or(a=w9, b=w25, out=y[8]);        // y[8] = ~s0.x0[8] + s0.x1[8]
+  Or(a=w10, b=w26, out=y[9]);       // y[9] = ~s0.x0[9] + s0.x1[9]
+  Or(a=w11, b=w27, out=y[10]);      // y[10] = ~s0.x0[10] + s0.x1[10]
+  Or(a=w12, b=w28, out=y[11]);      // y[11] = ~s0.x0[11] + s0.x1[11]
+  Or(a=w13, b=w29, out=y[12]);      // y[12] = ~s0.x0[12] + s0.x1[12]
+  Or(a=w14, b=w30, out=y[13]);      // y[13] = ~s0.x0[13] + s0.x1[13]
+  Or(a=w15, b=w31, out=y[14]);      // y[14] = ~s0.x0[14] + s0.x1[14]
+  Or(a=w16, b=w32, out=y[15]);      // y[15] = ~s0.x0[15] + s0.x1[15]
+
+}
