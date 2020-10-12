@@ -23,7 +23,7 @@
 
  CHIP MantissaMUL{
      IN a[8],b[8];
-    OUT out[16] ;
+    OUT out[16];
 
     PARTS:
     //pp0
@@ -58,9 +58,6 @@
     CSA(a = s20,b = c20,c = s11,sum = s30,carry = c30);   
 
     //16BitAdder( c30 , s30 )
-    Add16CLA(x = s30 , y = c30 , cb = false , S = false , z = out, OF = waste) ;
-
-    
-    
+    Add16CLA(x = s30 , y = c30 , cb = false , S = false , z = out , OF = waste) ;
 
  }

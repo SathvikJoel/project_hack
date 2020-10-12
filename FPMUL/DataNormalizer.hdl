@@ -1,0 +1,10 @@
+CHIP DataNormalizer{
+    IN Pm[16];
+    OUT out[7], GB;
+
+    PARTS:
+    Mux2Way7Bit(x1 = Pm[8..14], x0 = Pm[7..13], s0 = Pm[15] , y = out);
+
+    And(a=Pm[15], b=true, out=GB);
+    
+}

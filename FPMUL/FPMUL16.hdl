@@ -19,8 +19,15 @@ CHIP FPMUL16{
     //Mantissa Multiplier
     //Xm[0] = 1 since the mantissa is 1.Xm
     //Ym[0] = 1 since the mantissa is 1.Ym
-    MantissaMUL(a[0] = true , a[1..7] = X[9..15], b[1..7] = Y[9..15] , out = Pm);
-    // Data Normalization
-    Mux2Way7bit(x1 = Pm[14..8], x0 = Pm[13..7], s0 = Pm[15] , y = Z[9..15]);
+    MantissaMUL(a[7] = true , a[0..6] = X[0..6],b[7] = true, b[0..6] = Y[0..6] , out = Pm );
+    // // Data Normalization
+    // Mux2Way7Bit(x1 = Pm[14..8], x0 = Pm[13..7], s0 = Pm[15] , y = Z[9..15]);
+    DataNormalizer(Pm = Pm , out  = Z[0..6] , GB = GB);
+    //Exponent Ze calculation
+    ExpMul(x=X[7..14], y=Y[7..14], p15 = GB , z = Z[7..14]);
+
+    //Sign Bit = Xs XOR Ys
+    Xor(a=X[15], b=Y[15], out= Z[15]);
+
 
 }
