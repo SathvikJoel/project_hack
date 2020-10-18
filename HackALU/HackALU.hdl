@@ -37,7 +37,7 @@ CHIP HackALU {
     Xor16(x = Ny,y = tempY,z = q);
     Add16(a = p,b = q,out = sum);
     And16(a = p,b = q,out = PandQ);
-    Mux16(a = sum,b = PandQ,sel = f,out = PreOut1);
+    Mux16(a = PandQ,b = sum,sel = f,out = PreOut1);
     BitCopy16(a = no,out = No);
     Xor16(x = No,y = PreOut1,z = out1);
     NgBit(a = out1,out = ng);
