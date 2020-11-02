@@ -1,0 +1,41 @@
+/*Designed by : D Hakesh
+CPU.hdl .. Perfomes All logical operations and Arithmetic operations using Hack ALU on 16 Bit numbers.
+           Also load and store the data into registers(A and D) and Data memory (M) respectively
+           Architecture is based on Von NeuMann Architecture
+
+Input :
+1 . 
+*/
+
+CHIP CPU{
+
+    IN  inM[16],instruction[16],reset;           
+    OUT outM[16],writeM,addressM[15],pc[15];          
+
+    PARTS:
+
+    Not(in = instruction[15],out = Asignal);
+    And(a = true,b = instruction[15],out = Csignal);
+    And(a = instruction[5],b = Csignal,out = d1); 
+    Or(a = d1,b = Asignal,out = LoadA);
+    Mux16(a = instruction, b = out, sel = Csignal, out = inputAReg);
+    ARegister(in = inputAReg,load = LoadA,out = A,out[0..14] = addressM);
+    Mux16(a = A,b = inM,sel = instruction[12],out = AorMdata); 
+    And(a = instruction[4],b = Csignal,out = d2); 
+    DRegister(in = out,load = d2,out = D);
+
+    HackALU(x = D,y = AorMdata,zx = instruction[11],nx = instruction[10],zy = instruction[9],ny = instruction[8],f = instruction[7],no = instruction[6],out = out,out = outM,zr = zr,ng = ng);
+
+    And(a = instruction[3],b = Csignal,out = writeM);
+
+    Not(in = zr,out = notzr);
+    Not(in = ng,out = notng);
+    And(a = notzr,b = notng,out = tempPositive);
+    And(a = instruction[0],b = tempPositive,out = positive);
+    And(a = instruction[1],b = zr,out = zero);
+    And(a = instruction[2],b = ng,out = negative);
+    Or8Way(in[0] = negative,in[1] = zero,in[2] = positive,in[3..7] = false,out = jmpSignal);
+    And(a = jmpSignal,b = Csignal,out = jump);
+
+    PC(in = A,load = jump,inc = true,reset = reset,out[0..14] = pc);
+}
