@@ -2,7 +2,7 @@
 
 //  if(a>b) then c=a-b else c=b-a
 
-
+      @0
       @a       // a refers to some mem. location.
       D=M      // D=a 
       @b       // b refers to some mem. location.

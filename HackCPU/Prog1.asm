@@ -1,7 +1,7 @@
 
 //    d = a + b - c
 
-
+      @0
       @a      // a refers to some mem. location.
       D=M     // D=a
       @b      // b refers to some mem. location.

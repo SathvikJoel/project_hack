@@ -2,7 +2,7 @@
 
 //  Adds 1 + 2 +....+ 99
 
-
+       @0
        @i     // i refers to some mem. location.
        M=1    // i=1
        @sum   // sum refers to some mem. location.
