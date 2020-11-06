@@ -5,7 +5,8 @@ CHIP Computer{
     PARTS:
 
     
-    RAM16K(in=outM, load=writeM, address=addressM, out=inM);
+    Memory(in=outM, load=writeM, address=addressM, out=inM);
+   
     ROM32K(address=pc, out=instruction);
     CPU2300(inM=inM, instruction=instruction, reset=reset, outM=outM, writeM=writeM, addressM=addressM, pc=pc);
     
