@@ -1,35 +1,59 @@
 // load the program and setup
 
-load Prog1.hack,
+load Computer.hdl,
 output-file Prog1.out,
-output-list RAM[16]%B2.15.2 RAM[17]%B2.15.2 RAM[18]%B2.15.2 RAM[19]%B2.15.2;
+output-list RAM64[16]%D2.15.2 RAM64[17]%D2.15.2 RAM64[18]%D2.15.2 RAM64[19]%D2.15.2;
 
-// testcase 1: d = 8 + 16 - 4
-set RAM[16] %B000000000001000, 
-set RAM[17] %B000000000010000, 
-set RAM[18] %B000000000000100;
+ROM32K load Prog1.hack,
+
+-------------------------------
+TESTCASE 1 :: d = 8 + 16 - 4
+
+
+set RAM64[16] 8, 
+set RAM64[17] 16, 
+set RAM64[18] 4;
 repeat 8{
-   ticktock;
+   tick,tock;
 }
 output;
 
-// testcase 2: d = 32767 + 1 - 2
-set PC 0,                       // Reset prog. counter
-set RAM[16] %B111111111111111,
-set RAM[17] %B000000000000001,
-set RAM[18] %B000000000000010;
+
+set reset 1,      // Reset the Computer
+tick,             // Run the clock in order to commit the Program
+tock;             // Counter (PC, a sequential chip) to the new reset value
+
+-------------------------------
+TESTCASE 2 ::  d = 32767 + 1 - 2
+
+set reset 0,      // "De-reset" the computer (committed in next tick-tock)
+
+
+set RAM64[16] 32767,
+set RAM64[17] 1,
+set RAM64[18] 2;
 repeat 8{
-   ticktock;
+   tick,tock;
 }
 output;
 
-// testcase 3: d = 21845 + 10922 - 31
-set PC 0,                       // Reset prog. counter
-set RAM[16] %B101010101010101,
-set RAM[17] %B010101010101010,
-set RAM[18] %B000000000011111;
+
+set reset 1,         // Reset the Computer
+tick,                // Run the clock in order to commit the Program
+tock;                // Counter (PC, a sequential chip) to the new reset value
+
+-------------------------------
+TESTCASE 3 ::  d = 21845 + 10922 - 31
+
+
+set reset 0,            // "De-reset" the computer (committed in next tick-tock)
+
+
+set RAM64[16] 21845,
+set RAM64[17] 10922,
+set RAM64[18] 31;
 repeat 8{
-   ticktock;
+   tick,tock;
 }
 output;
 
