@@ -1,11 +1,24 @@
-
+// Designed by Sai Teja @ Team 11
 
 //  Adds 1 + 2 +....+ 99
 
 
-       @16     // 16 refers to mem. location 16
+
+// C code 
+
+// int i = 1
+// int sum = 0
+// while (i < 100)
+//    { 
+//       sum = sum + i;
+//       i = i + 1;
+//    }
+
+
+
+       @16    // 16 refers to mem. location 16
        M=1    // i=1
-       @17   // 17 refers to mem. location 17
+       @17    // 17 refers to mem. location 17
        M=0    // sum=0
   (LOOP)
        @16
